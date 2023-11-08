@@ -1,37 +1,52 @@
 <?php
+ #INICIA VARIVEL DE SESSAO
 session_start();
-include("conectadb.php");
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $login = $_POST['login'];
-    $senha = $_POST['senha'];
 
-    $sql = "SELECT COUNT(usu_id) FROM usuarios
-        WHERE usu_login = '$login' AND usu_senha = '$senha' AND usu_status = 's'";
-        ##GRAVA LOG
-    $sqllog = "INSERT INTO tab_log (tab_query, tab_data)
-    VALUES ('$sql', NOW())";
+#INCLUI CODIGO DE CONEXÃO DO BANCO
+include("conectadb.php");
+
+
+ #QUERY DE VALIDA SE USUARIO EXISTE
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+ 
+    $sql = "SELECT COUNT(usu_id) FROM usuarios WHERE usu_email = '$email' AND usu_senha = '$senha' AND usu_status = 's'";
+    $retorno = mysqli_query($link, $sql);
+
+    #SUGESTÃO ARIEL SANITIZAÇÃO
+    $retorno = mysqli_fetch_array($retorno) [0];
+
+     ##GRAVA LOG
+    $sql ='"'.$sql.'"';
+    $sqllog ="INSERT INTO tab_log (tab_query, tab_data)
+    VALUES ($sql, NOW())";
     mysqli_query($link, $sqllog);
 
-    $retorno = mysqli_query($link, $sql);
-    while($tbl = mysqli_fetch_array($retorno)){
-        $resultado = $tbl[0];
+    #SE O USUARIO NÃO EXISTE LOGA, SE NÃO, NÃO LOGA
+    if ($retorno == 0){
+        echo"<script>window.alert('USUARIO INCORRETO');</script>";
+        echo"<script>window.location.href='login.html';</script>";
     }
-
-    if($resultado == 0){
-        echo "<script>window.alert('Usuário inválido!');</script>";
-    } else{
+    else{
         $sql = "SELECT * FROM usuarios 
-        WHERE usu_login = '$login'
-        AND usu_senha = '$senha' AND usu_status = 's'";
-        $retorno = mysqli_query($link, $sql);
-        $sqllog = "INSERT INTO tab_log (tab_query, tab_data)
-        VALUES ('$sql', NOW())";
-            mysqli_query($link, $sqllog);
-        while($tbl = mysqli_fetch_array($retorno)) {
-            $_SESSION['idusuario'] = $tbl[0];
-            $_SESSION['nomeusuario'] = $tbl[1];
-        }
-        echo "<script>window.location.href='backoffice.php';</script>";
+        WHERE usu_email = '$email'
+        AND usu_senha = '$senha'
+        AND usu_status = 's'";
+    $retorno = mysqli_query($link,$sql);
+    ##GRAVA LOG
+    $sql ='"'.$sql.'"';
+    $sqllog ="INSERT INTO tab_log (tab_query, tab_data)
+    VALUES ($sql, NOW())";
+    mysqli_query($link, $sqllog);
+ 
+    while($tbl = mysqli_fetch_array($retorno)){
+        $_SESSION['idusuario'] = $tbl[0];
+        $_SESSION['nomeusuario'] = $tbl[1];
     }
+        echo"<script>window.location.href='backoffice.php';</script>";
+    }
+ 
 }
+ 
 ?>
