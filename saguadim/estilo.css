@@ -84,6 +84,9 @@
     border-radius: 4px;
     cursor: pointer;
   }
+  button:hover{
+    background-color: #666;
+  }
   
   /* Estiliza rodapé com cor de fundo escura e texto claro */
   footer {
