@@ -3,7 +3,7 @@
     include("cabecalho.php");
 
     #PASSANDO UMA INSTRUÇÃO AO BANCO DE DADOS
-    $sql = "SELECT * FROM usuarios WHERE usu_ativo = 's'";
+    $sql = "SELECT * FROM usuarios WHERE usu_status = 's'";
     $retorno = mysqli_query($link, $sql);
 
     #FORÇA SEMPRE TRAZER 'S' NA VARIÁVEL PARA UTILIZARMOS NOS RADIO BUTNTON
@@ -14,9 +14,9 @@
         $ativo = $_POST['ativo'];
     
         if ($ativo == 's') {
-            $sql = "SELECT * FROM usuarios WHERE usu_ativo = 's'";
+            $sql = "SELECT * FROM usuarios WHERE usu_status = 's'";
         } elseif ($ativo == 'n') {
-            $sql = "SELECT * FROM usuarios WHERE usu_ativo = 'n'";
+            $sql = "SELECT * FROM usuarios WHERE usu_status = 'n'";
         } else {
             $sql = "SELECT * FROM usuarios"; // Isso seleciona todos os usuários.
         }
@@ -30,9 +30,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./css/estiloadm.css">
+        <link rel="stylesheet" href="./estilo2.css">
         <title>LISTA USUARIOS</title>
     </head>
     <body>

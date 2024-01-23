@@ -6,17 +6,16 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 isset($_SESSION['nomeusuario'])?$nomeusuario = $_SESSION['nomeusuario']: "";
 $nomeusuario = $_SESSION['nomeusuario'];
 ?>
-
 <div>
     <ul class="menu">
-        <li><a href="cadastrausuario.php">CADASTRAR USUARIO</a></li>
+        <li><a href="cadastra.php">CADASTRAR USUARIO</a></li>
         <li><a href="listausuario.php">LISTAR USUARIO</a></li>
         <li><a href="cadastraproduto.php">CADASTRAR PRODUTO</a></li>
-        <li><a href="lista-produto.php">LISTAR PRODUTO</a></li>
-        <li><a href="login-cliente.php">LOGIN CLIENTE</a></li>
-        <li><a href="cadastro-cliente.php">LISTA CLIENTE</a></li>
+        <li><a href="listaproduto.php">LISTAR PRODUTO</a></li>
+        <!--<li><a href="login-cliente.php">LOGIN CLIENTE</a></li>-->
+        <!--<li><a href="cadastro-cliente.php">LISTA CLIENTE</a></li>-->
         <li><a href="fornecedor.php">FORNECEDOR</a></li>
-        <li><a href="encomendas.php">ENCOMENDAS</a></li>
+        <!--<li><a href="encomendas.php">ENCOMENDAS</a></li>-->
 
         <li class="menuloja"><a href="logout.php">SAIR</a></li>
         
