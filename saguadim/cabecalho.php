@@ -8,7 +8,7 @@ $nomeusuario = $_SESSION['nomeusuario'];
 ?>
 <div>
     <ul class="menu">
-        <li><a href="cadastra.php">CADASTRAR USUARIO</a></li>
+        <li><a href="cadastra2.php">CADASTRAR USUARIO</a></li>
         <li><a href="listausuario.php">LISTAR USUARIO</a></li>
         <li><a href="cadastraproduto.php">CADASTRAR PRODUTO</a></li>
         <li><a href="listaproduto.php">LISTAR PRODUTO</a></li>
