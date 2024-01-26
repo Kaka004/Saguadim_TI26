@@ -8,7 +8,8 @@ CREATE TABLE usuarios(
     usu_senha VARCHAR(50) NOT NULL,
     usu_status CHAR (1) NOT NULL,
     usu_key VARCHAR (10) NOT NULL,
-    usu_email VARCHAR(100) NOT NULL
+    usu_email VARCHAR(100) NOT NULL,
+    id_nivel_acesso INT
 );
 
 --CRIAÇÃO DA TABELA CLIENTES

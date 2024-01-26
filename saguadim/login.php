@@ -1,52 +1,49 @@
 <?php
- #INICIA VARIVEL DE SESSAO
 session_start();
-
-#INCLUI CODIGO DE CONEXÃO DO BANCO
 include("conectadb.php");
 
-
- #QUERY DE VALIDA SE USUARIO EXISTE
-if($_SERVER['REQUEST_METHOD']=='POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
- 
+
     $sql = "SELECT COUNT(usu_id) FROM usuarios WHERE usu_email = '$email' AND usu_senha = '$senha' AND usu_status = 's'";
     $retorno = mysqli_query($link, $sql);
+    $retorno = mysqli_fetch_array($retorno)[0];
 
-    #SUGESTÃO ARIEL SANITIZAÇÃO
-    $retorno = mysqli_fetch_array($retorno) [0];
-
-     ##GRAVA LOG
-    $sql ='"'.$sql.'"';
-    $sqllog ="INSERT INTO tab_log (tab_query, tab_data)
-    VALUES ($sql, NOW())";
+    $sql = '"' . $sql . '"';
+    $sqllog = "INSERT INTO tab_log (tab_query, tab_data) VALUES ($sql, NOW())";
     mysqli_query($link, $sqllog);
 
-    #SE O USUARIO NÃO EXISTE LOGA, SE NÃO, NÃO LOGA
-    if ($retorno == 0){
-        echo"<script>window.alert('USUARIO INCORRETO');</script>";
-        echo"<script>window.location.href='login.html';</script>";
-    }
-    else{
+    if ($retorno == 0) {
+        echo "<script>window.alert('USUÁRIO INCORRETO');</script>";
+        echo "<script>window.location.href='login.html';</script>";
+    } else {
         $sql = "SELECT * FROM usuarios 
-        WHERE usu_email = '$email'
-        AND usu_senha = '$senha'
-        AND usu_status = 's'";
-    $retorno = mysqli_query($link,$sql);
-    ##GRAVA LOG
-    $sql ='"'.$sql.'"';
-    $sqllog ="INSERT INTO tab_log (tab_query, tab_data)
-    VALUES ($sql, NOW())";
-    mysqli_query($link, $sqllog);
- 
-    while($tbl = mysqli_fetch_array($retorno)){
-        $_SESSION['idusuario'] = $tbl[0];
-        $_SESSION['nomeusuario'] = $tbl[1];
+        WHERE usu_email = 'admin@admin.com'
+        AND usu_senha = '1234'
+        AND usu_status = 's'
+        AND usu_nivel_acesso = '2'"; // Ajustado para o nível de acesso correspondente
+
+        $retorno = mysqli_query($link, $sql);
+
+        $sql = '"' . $sql . '"';
+        $sqllog = "INSERT INTO tab_log (tab_query, tab_data) VALUES ($sql, NOW())";
+        mysqli_query($link, $sqllog);
+
+        while ($tbl = mysqli_fetch_array($retorno)) {
+            $_SESSION['idusuario'] = $tbl[0];
+            $_SESSION['nomeusuario'] = $tbl[1];
+            $_SESSION['nivel_acesso'] = $tbl['usu_nivel_acesso'];
+        }
+
+        if ($_SESSION['nivel_acesso'] == '2') { // Ajustado para o nível de acesso correspondente
+            echo "<script>window.location.href='backoffice.php';</script>";
+        } elseif ($_SESSION['nivel_acesso'] == 'cliente') {
+            echo "<script>window.location.href='pagina_cliente.php';</script>";
+        } else {
+            echo "<script>window.alert('NÍVEL DE ACESSO INVÁLIDO');</script>";
+            echo "<script>window.location.href='login.html';</script>";
+        }
     }
-        echo"<script>window.location.href='backoffice.php';</script>";
-    }
- 
 }
- 
 ?>

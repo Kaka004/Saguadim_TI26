@@ -24,7 +24,8 @@ $nomeusuario = $_SESSION['nomeusuario'];
         ?>
         <li class="profile">OLÁ <?=strtoupper($nomeusuario) ?></li>
         <?php
-        } else {
+        }
+         else {
             echo "<script>window.alert('USUÁRIO NÃO AUTENTICADO')
             window.location.href='login.php';</script>";
         }
