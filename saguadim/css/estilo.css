@@ -14,7 +14,7 @@
   /* Define um fundo simples e uma fonte padrão para o corpo do documento */
   body {
     background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
   }
   
   /* Estiliza o cabeçalho com uma cor de fundo e texto simples */
@@ -58,6 +58,7 @@
   h3 {
     font-size: 20px;
   }
+
   
   /* Estiliza caixas de texto de entrada e rótulos */
   input[type="text"],
@@ -95,4 +96,8 @@
     text-align: center;
     padding: 10px;
   }
+
+  
+  
+
  

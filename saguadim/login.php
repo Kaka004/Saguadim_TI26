@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     mysqli_query($link, $sqllog);
 
     if ($retorno == 0) {
-        echo "<script>window.alert('USUÁRIO INCORRETO');</script>";
+        echo "<script>window.alert('EMAIL OU SENHA INCORRETOS');</script>";
         echo "<script>window.location.href='login.html';</script>";
     } else {
         $sql = "SELECT * FROM usuarios 

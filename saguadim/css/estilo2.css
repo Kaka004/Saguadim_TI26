@@ -1,12 +1,12 @@
 html{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: hwb(295 0% 87%); /* Define a cor de fundo do menu */
+    background-color: hwb(32 18% 17%); /* Define a cor de fundo do menu */
   }
   .menu {
     list-style-type: none; /* Remove os marcadores de lista */
     margin: 0;
     padding: 0;
-    background-color: hwb(0 95% 5%); /* Define a cor de fundo do menu */
+    background-color: hwb(0 100% 0%); /* Define a cor de fundo do menu */
     border-radius: 10px;
   }
   .menu li {
@@ -17,9 +17,10 @@ html{
     padding: 8px 16px; /* Adiciona espaçamento interno aos links */
     text-decoration: none; /* Remove a decoração de texto padrão (sublinhado) */
     color: #333; /* Define a cor do texto dos links */
+  
   }
   .menu li a:hover {
-    background-color: #470057; /* Define a cor de fundo ao passar o mouse sobre os links */
+   /* Define a cor de fundo ao passar o mouse sobre os links */
     color: #fff; /* Define a cor do texto ao passar o mouse sobre os links */
     border-radius: 10px;
   }
@@ -85,7 +86,7 @@ html{
     color: #e0dceb;
   }
   p{
-    color: #e0dceb;
+    color: #000000;
   }
   .caixaexclui{
     width: 300px;
@@ -120,16 +121,3 @@ html{
       font-size: smaller;
     }
 
-@keyframes spinner {
-  to { transform: rotate(360deg); }
-}
-
-.spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  border-top: 4px solid #333;
-  width: 40px;
-  height: 40px;
-  animation: spinner 1s linear infinite;
-  margin: 50px auto; /* Ajuste a margem conforme necessário */
-}

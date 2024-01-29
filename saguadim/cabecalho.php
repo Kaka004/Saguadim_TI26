@@ -6,6 +6,7 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 isset($_SESSION['nomeusuario'])?$nomeusuario = $_SESSION['nomeusuario']: "";
 $nomeusuario = $_SESSION['nomeusuario'];
 ?>
+<link rel="shortcut icon" href="./img/coxinhaaa.png" type="image/x-icon"> 
 <div>
     <ul class="menu">
         <li><a href="cadastra2.php">CADASTRAR USUARIO</a></li>
@@ -15,6 +16,8 @@ $nomeusuario = $_SESSION['nomeusuario'];
         <!--<li><a href="login-cliente.php">LOGIN CLIENTE</a></li>-->
         <!--<li><a href="cadastro-cliente.php">LISTA CLIENTE</a></li>-->
         <li><a href="fornecedor.php">FORNECEDOR</a></li>
+        <li><a href="backoffice.php">HOME</a></li>
+        <li><a href="pagina admin.php">ADM</a></li>
         <!--<li><a href="encomendas.php">ENCOMENDAS</a></li>-->
 
         <li class="menuloja"><a href="logout.php">SAIR</a></li>
@@ -32,3 +35,4 @@ $nomeusuario = $_SESSION['nomeusuario'];
         ?>
     </ul>
 </div>
+
