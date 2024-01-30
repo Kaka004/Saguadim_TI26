@@ -1,77 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="./img/coxinhaaa.png" type="image/x-icon">
-    <link rel="stylesheet" href="./css/estilo.css">
-    <style>
-        /* Adicione as classes do CSS aqui */
-        .page {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            align-content: center;
-            justify-content: center;
-            width: 100%;
-            height: 100vh;
-            background-color: #cfa519;
-        }
-
-        .formLogin {
-            display: flex;
-            flex-direction: column;
-            background-color: #ffffff75;
-            border-radius: 7px;
-            padding: 40px;
-            box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
-            gap: 5px;
-        }
-
-        .formLogin input {
-            padding: 15px;
-            font-size: 14px;
-            border: 1px solid #ccc;
-            margin-bottom: 20px;
-            margin-top: 5px;
-            border-radius: 4px;
-            transition: all linear 160ms;
-            outline: none;
-            
-        }
-
-        .formLogin input:focus {
-            border: 1px solid #c08913;
-        }
-
-        .formLogin label {
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .btn {
-            background-color: #daa514;
-            color: #fff;
-            font-size: 14px;
-            font-weight: 600;
-            border: none !important;
-            transition: all linear 160ms;
-            cursor: pointer;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-            background-color: #ccbf0c;
-        }
-        h6{
-            text-align: center;
-        }
-        
-    </style>
-
+    <link rel="stylesheet" href="./css/usuario.css">
     <title>Login</title>
 </head>
 
@@ -86,9 +19,9 @@
                 <div class="spinner hide" id="loadingSpinner"></div>
                 <input type="submit" class="btn" value="LOGIN" />
             </form>
-            <h6> <a href="esqueci minha senha.php" id="toggleLogin">Esqueci minha senha</a></h6>
+            <h6> <a href="esqueci minha senha.php" id="toggleEsqueciSenha">Esqueci minha senha</a></h6>
             <h5>
-                <a href="#" id="toggleCadastra"> NÃO TEM CONTA? CLIQUE AQUI</a>
+                Não tem conta? <a href="#" id="toggleCadastra">clique aqui</a>
             </h5>
         </div>
         <div id="cadastra" class="formLogin">
@@ -104,11 +37,10 @@
             <br>
             <br>
             <h5>
-                <a href="#" id="toggleLogin">TEM CONTA? CLIQUE AQUI</a>
+                Tem conta? <a href="#" id="toggleLogin">clique aqui</a>
             </h5>
         </div>
     </div>
 </body>
 <script src="script.js"></script>
-
 </html>
