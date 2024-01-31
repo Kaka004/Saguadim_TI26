@@ -13,7 +13,9 @@ if (isset($_GET['id'])) {
     if ($resultado && $usuario = mysqli_fetch_assoc($resultado)) {
         // Exibe os dados do usuário no formulário
         $login = isset($usuario['usu_login']) ? $usuario['usu_login'] : ''; // Verifica se a chave 'usu_login' existe
+        $senha = isset($usuario['usu_senha']) ? $usuario['usu_senha'] : '';
         $status = isset($usuario['usu_status']) ? $usuario['usu_status'] : ''; // Adapte conforme necessário
+
     } else {
         // Usuário não encontrado, redireciona ou exibe uma mensagem de erro
         header("Location: listausuario.php"); // Você pode ajustar o redirecionamento conforme necessário
@@ -29,10 +31,11 @@ if (isset($_GET['id'])) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Recupera os dados do formulário
     $novologin = mysqli_real_escape_string($link, $_POST['novo_login']);
+    $novasenha = mysqli_real_escape_string($link, $_POST['nova_senha']);
     $novostatus = mysqli_real_escape_string($link, $_POST['novo_status']);
 
     // Atualiza os dados do usuário no banco de dados
-    $sql = "UPDATE usuarios SET usu_login = '$novologin', usu_status = '$novostatus' WHERE usu_id = $id";
+    $sql = "UPDATE usuarios SET usu_login = '$novologin',usu_senha = '$novasenha' , usu_status = '$novostatus' WHERE usu_id = $id";
     mysqli_query($link, $sql);
 
     // Redireciona para a lista de usuários após a atualização
@@ -56,6 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <h1>Alterar Dados do Usuário</h1>
         <label for="novo_login">Novo login:</label>
         <input type="text" id="novo_login" name="novo_login" value="<?= $login ?>" required>
+        <label for="nova_senha">Nova Senha:</label>
+        <input type="text" id="nova_senha" pattern=".{5,}" name="nova_senha" value="<?= $senha ?>" required>
 
         <label for="novo_status">status:</label>
         <select id="novo_status" name="novo_status" required>

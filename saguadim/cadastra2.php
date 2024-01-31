@@ -61,12 +61,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 <div id="cadastra">
         <form action="cadastra.php" method="post">
-        <label>NOME</label>
-                <input type="text" name="login" id="login" placeholder="nome" required/>
-            <label>EMAIL</label>
-                <input type="text" name="email" id="email" placeholder="email@email.com" required/>
-            <label>SENHA</label>
-                <input type="password" name="senha" id="senha" placeholder="*****" required/>
+                <label>NOME</label>
+                <input type="text" name="login" placeholder="Nome Completo" required />
+                <label>EMAIL</label>
+                <input type="email" name="email" placeholder="nome.sala@curso.com" required />
+                <label>TELEFONE</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(16) 91234-5678" required>
+                <label>CPF</label>
+                <input type="text" name="cpf" id="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="000.000.000-00" required>
+                <label>CURSO</label>
+                <input type="text" name="curso" placeholder="Qual seu curso?" required/>
+                <label>SALA</label>
+                <input type="text" name="sala" id="sala" placeholder="Sala do Senac">
+                <label>SENHA</label>
+                <input type="password" name="senha" placeholder="*****" required />
 
                 <input type="submit" value="CADASTRAR" />
           </form>

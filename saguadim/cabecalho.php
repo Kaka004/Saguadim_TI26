@@ -1,9 +1,9 @@
 <?php 
 include("conectadb.php");
-if(session_status() !== PHP_SESSION_ACTIVE) {
+if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
-isset($_SESSION['nomeusuario'])?$nomeusuario = $_SESSION['nomeusuario']: "";
+isset($_SESSION['nomeusuario']) ? $nomeusuario = $_SESSION['nomeusuario'] : "";
 $nomeusuario = $_SESSION['nomeusuario'];
 ?>
 <link rel="shortcut icon" href="./img/coxinhaaa.png" type="image/x-icon"> 
@@ -29,7 +29,7 @@ $nomeusuario = $_SESSION['nomeusuario'];
         }
          else {
             echo "<script>window.alert('USUÁRIO NÃO AUTENTICADO')
-            window.location.href='login.php';</script>";
+            window.location.href='login.html';</script>";
         }
         ?>
     </ul>

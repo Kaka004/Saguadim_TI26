@@ -16,29 +16,35 @@
                 <input type="email" name="email" placeholder="email@email.com" required />
                 <label>SENHA</label>
                 <input type="password" name="senha" placeholder="*****" required />
-                <div class="spinner hide" id="loadingSpinner"></div>
                 <input type="submit" class="btn" value="LOGIN" />
             </form>
-            <h6> <a href="esqueci minha senha.php" id="toggleEsqueciSenha">Esqueci minha senha</a></h6>
-            <h5>
-                Não tem conta? <a href="#" id="toggleCadastra">clique aqui</a>
-            </h5>
+            
+            <h5>Não tem conta? <a href="#" id="toggleCadastra">clique aqui</a></h5>
+        
         </div>
         <div id="cadastra" class="formLogin">
             <form action="cadastra.php" method="post">
                 <label>NOME</label>
-                <input type="text" name="login" placeholder="login" required />
+                <input type="text" name="login" placeholder="Nome Completo" required />
                 <label>EMAIL</label>
-                <input type="email" name="email" placeholder="email@email.com" required />
+                <input type="email" name="email" placeholder="nome.sala@curso.com" required />
+                <label>TELEFONE</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(16) 91234-5678" required>
+                <label>CPF</label>
+                <input type="tel" name="cpf" id="cpf" placeholder="000.000.000-00" required>
+                <label>CURSO</label>
+                <input type="text" name="curso" placeholder="Qual seu curso?" required/>
+                <label>SALA</label>
+                <input type="text" name="sala" id="sala"  placeholder="Sala do Senac">
                 <label>SENHA</label>
-                <input type="password" name="senha" placeholder="*****" required />
-                <input type="submit" class="btn" value="CADASTRAR" />
+                <input type="password" name="senha" pattern=".{5,}" placeholder="*****" required />
+                <input type="submit" class="btn" value="CADASTRO" />
             </form>
             <br>
             <br>
-            <h5>
-                Tem conta? <a href="#" id="toggleLogin">clique aqui</a>
-            </h5>
+            
+            <h5>Tem conta? <a href="#" id="toggleLogin">clique aqui</a></h5>
+        
         </div>
     </div>
 </body>
