@@ -2,15 +2,22 @@
 include("cabecalho.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nome = mysqli_real_escape_string($link, $_POST['nome']);
     $email = mysqli_real_escape_string($link, $_POST['email']);
+    $telefone =  mysqli_real_escape_string($link, $_POST['telefone']);
+    $cpf = mysqli_real_escape_string($link, $_POST['cpf']);
+    $curso = mysqli_real_escape_string($link, $_POST['curso']);
+    $sala = mysqli_real_escape_string($link, $_POST['sala']); 
     $senha = mysqli_real_escape_string($link, $_POST['senha']);
-    $login = mysqli_real_escape_string($link, $_POST['login']);
+
 
     $key = rand(100000, 999999);
 
     # INSERIR INSTRUÇÕES NO BANCO
-    $sql = "SELECT COUNT(usu_id) FROM usuarios
-            WHERE usu_email = '$email' OR usu_login = '$login'";
+    $sql = "SELECT COUNT(cli_id) FROM clientes
+            WHERE usu_nome = '$nome', cli_email = '$email', 
+            cli_telefone = '$telefone',  cli_cpf = '$cpf',
+            cli_curso = '$curso',  cli_sala = '$sala', cli_senha = '$senha'";
     
     $resultado = mysqli_query($link, $sql);
 
@@ -31,9 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "<script>window.alert('EMAIL OU LOGIN JÁ EXISTENTE');</script>";
         echo "<script>window.location.href='login.html';</script>";
     } else {
-        $sql = "INSERT INTO usuarios
-                (usu_login, usu_senha, usu_status, usu_key, usu_email)
-                VALUES ('$login', '$senha', 's', '$key', '$email')";
+        $sql = "INSERT INTO clientes
+                (cli_nome, cli_email, cli_telefone, cli_cpf, cli_sala, cli_status, cli_staus, cli_senha)
+                VALUES ('$nome', '$email', '$telefone', '$cpf', '$sala', 's', 0, '$senha')";
         
         if (!mysqli_query($link, $sql)) {
             die('Erro na inserção de usuário: ' . mysqli_error($link));
@@ -44,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                    VALUES ('$sql', NOW())";
         mysqli_query($link, $sqllog);
 
-        echo "<script>window.alert('USUÁRIO CADASTRADO COM SUCESSO');</script>";
+        echo "<script>window.alert('CLIENTE CADASTRADO COM SUCESSO');</script>";
         echo "<script>window.location.href='login.html';</script>";
     }
 }
@@ -62,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div id="cadastra">
         <form action="cadastra.php" method="post">
                 <label>NOME</label>
-                <input type="text" name="login" placeholder="Nome Completo" required />
+                <input type="text" name="nome" placeholder="Nome Completo" required />
                 <label>EMAIL</label>
                 <input type="email" name="email" placeholder="nome.sala@curso.com" required />
                 <label>TELEFONE</label>

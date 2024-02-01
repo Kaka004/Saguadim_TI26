@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="novo_login">Novo login:</label>
         <input type="text" id="novo_login" name="novo_login" value="<?= $login ?>" required>
         <label for="nova_senha">Nova Senha:</label>
-        <input type="text" id="nova_senha" pattern=".{5,}" name="nova_senha" value="<?= $senha ?>" required>
+        <input type="password" id="nova_senha" pattern=".{5,}" name="nova_senha" required>
 
         <label for="novo_status">status:</label>
         <select id="novo_status" name="novo_status" required>

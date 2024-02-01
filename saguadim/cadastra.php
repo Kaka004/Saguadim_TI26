@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $key = rand(100000, 999999);
 
     # Verifica se o email já existe
-    $sql_select = "SELECT COUNT(cli_id) FROM clientes WHERE cli_email = $email";
+    $sql_select = "SELECT COUNT(cli_id) FROM clientes WHERE cli_email = ?";
     $stmt_select = mysqli_prepare($link, $sql_select);
     mysqli_stmt_bind_param($stmt_select, "s", $email);
     mysqli_stmt_execute($stmt_select);
@@ -34,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         return;
     } else {
         # Insere novo cliente
-        $sql_insert = "INSERT INTO clientes (cli_id, cli_nome, cli_email, cli_telefone, cli_cpf, cli_curso, cli_sala, cli_status, cli_saldo, cli_senha) 
-        VALUES ($id, $nome, $email, $telefone, $cpf, $curso, $sala, 's', 0, $senha)";
+        $sql_insert = "INSERT INTO clientes (cli_nome, cli_email, cli_telefone, cli_cpf, cli_curso, cli_sala, cli_status, cli_saldo, cli_senha) 
+        VALUES (?, ?, ?, ?, ?, ?, 's', 0, ?)";        
         $stmt_insert = mysqli_prepare($link, $sql_insert);
-        mysqli_stmt_bind_param($stmt_insert, 's',$id, $nome, $email, $telefone, $cpf, $curso, $sala, $senha );
+        mysqli_stmt_bind_param($stmt_insert, 'ssssssi', $nome, $email, $telefone, $cpf, $curso, $sala, $senha);
         mysqli_stmt_execute($stmt_insert);
         mysqli_stmt_close($stmt_insert);
 
