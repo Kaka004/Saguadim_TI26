@@ -140,6 +140,37 @@ html{
     outline: none;
     
 }
+button {
+  background-color: black;
+  color: antiquewhite;
+  padding: 15px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  border-radius: 4px;
+  transition: all linear 160ms;
+  outline: none;
+}
+.toggle-password{
+    transition: ease-in-out 1s;
+    width: 50%;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border: none !important;
+    transition: all linear 160ms;
+    cursor: pointer;
+    text-align: center;
+}
+
+button:hover{
+  background-color: #666;
+  transition: ease-in-out 1s;
+  width:80%;
+  
+}
+
 
 .formLogin input:focus {
     border: 1px solid #c08913;
@@ -168,6 +199,6 @@ html{
 .btn:hover {
     /*transform: scale(1.05);*/
     transition: ease-in-out 1s;
-    width: 100%;
+    width: 80%;
     background-color: #a57d10;
 }
