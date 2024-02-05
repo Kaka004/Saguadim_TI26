@@ -4,24 +4,26 @@
 
 include('cabecalho.php');
 
-$sql = "SELECT pro_nome, pro_quantidade, pro_custo, pro_preco, pro_id, pro_status FROM produtos WHERE pro_status = 's'";
+$sql = "SELECT pro_nome, pro_descricao, pro_custo, pro_preco, pro_quantidade,
+pro_validade, pro_id, pro_status FROM produtos WHERE pro_status = 's'";
 $retorno = mysqli_query($link, $sql);
 $ativo = "s";
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST'){
     $ativo = $_POST['ativo'];
      if($ativo == 's'){
-        $sql = "SELECT pro_nome, pro_quantidade, pro_custo, pro_preco, pro_id, pro_status FROM produtos 
-        WHERE pro_status = 's'";
+        $sql = "SELECT pro_nome, pro_descricao, pro_custo, pro_preco, pro_quantidade,
+        pro_validade, pro_id, pro_status FROM produtos WHERE pro_status = 's'";
         $retorno = mysqli_query($link, $sql);
      }
      else if($ativo == "todos"){
-        $sql = "SELECT pro_nome, pro_quantidade, pro_custo, pro_preco, pro_id, pro_status FROM produtos";
+        $sql = "SELECT pro_nome, pro_descricao, pro_custo, pro_preco, pro_quantidade,
+        pro_validade, pro_id, pro_status FROM produtos";
         $retorno = mysqli_query($link, $sql);
      }
      else{
-        $sql = "SELECT pro_nome, pro_quantidade, pro_custo, pro_preco, pro_id, pro_status FROM produtos 
-        WHERE pro_status = 'n'";
+        $sql = "SELECT pro_nome, pro_descricao, pro_custo, pro_preco, pro_quantidade,
+        pro_validade, pro_id, pro_status FROM produtos WHERE pro_status = 'n'";
         $retorno = mysqli_query($link, $sql);
      }
 }
@@ -48,9 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST'){
         <table border="2">
             <tr>
                 <th>NOME</th>
-                <th>QUANTIDADE</th>
+                <th>DESCRIÇÃO</th>
                 <th>CUSTO</th>
                 <th>PREÇO</th>
+                <th>QUANTIDADE</th>
+                <th>VALIDADE</th>
                 <th>ALTERAR</th>
                 <th>STATUS</th>
             </tr>
@@ -63,8 +67,10 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST'){
             <td><?=$tbl[1]?></td>
             <td><?=number_format($tbl[2], 2,',','.')?></td>
             <td><?=number_format($tbl[3], 2,',','.')?></td>
-            <td><a href="alteraproduto.php?id=<?=$tbl[4] ?>"><input type="button" value="ALTERAR"></td>
-            <td><?= $check = ($tbl[5] == 's')? "SIM":"NÃO"?></td>
+            <td><?= $tbl[4]?></td>
+            <td><?= $tbl[5]?></td>
+            <td><a href="alteraproduto.php?id=<?=$tbl[6] ?>"><input type="button" value="ALTERAR"></td>
+            <td><?= $check = ($tbl[7] == 's')? "SIM":"NÃO"?></td>
         </tr>
         <?php
             }

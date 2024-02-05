@@ -23,13 +23,19 @@ if (isset($_GET['id'])) {
 
 // Se o formulário foi enviado, atualize os dados do produto
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nome = $_POST['nome']; // Substitua 'nome' pelo nome do campo correspondente
-    $preco = $_POST['preco']; // Substitua 'preco' pelo nome do campo correspondente
+    $nome = $_POST['nome'];
+    $descricao = $_POST['descricao'];
+    $custo = $_POST['custo'];
+    $preco = $_POST['preco'];
+    $quantidade = $_POST['quantidade'];
+    $validade = $_POST['validade'];
+    $status = $_POST['novo_status'];
+    
 
-    // Adicione as demais variáveis conforme necessário
 
     // Atualiza os dados do produto no banco de dados
-    $sql = "UPDATE produtos SET pro_nome='$nome', pro_preco='$preco' WHERE pro_id=$produto_id";
+    $sql = "UPDATE produtos SET pro_nome='$nome', pro_descricao= '$descricao', pro_custo='$custo', pro_preco='$preco', 
+    pro_quantidade='$quantidade', pro_validade='$validade', pro_status='$status' WHERE pro_id=$produto_id";
     $atualizacao = mysqli_query($link, $sql);
 
     if ($atualizacao) {
@@ -45,20 +51,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <html>
     <head>
-        <!-- Adicione os cabeçalhos necessários aqui -->
+        <link rel="stylesheet" href="./css/estilo2.css">
         <title>ALTERAR PRODUTO</title>
     </head>
     <body>
         <div id="background">
             <form action="alteraproduto.php?id=<?=$produto_id?>" method="post">
                 <label for="nome">Nome:</label>
-                <input type="text" name="nome" value="<?=$produto['nome']?>" required>
+                <input type="text" name="nome" value="<?=$produto['pro_nome']?>" required>
+                <br>
+                <label for="descricao">Descrição:</label>
+                <textarea name="descricao" rows="5" cols="30"><?=$produto['pro_descricao']?></textarea>
+                <br>
+                <label for="custo">Custo (R$):</label>
+                <input type="number" step="0.01" name="custo" value="<?=$produto['pro_custo']?>">
                 <br>
                 <label for="preco">Preço:</label>
-                <input type="text" name="preco" value="<?=$produto['preco']?>" required>
+                <input type="number" name="preco" step="0.01" value="<?=$produto['pro_preco']?>" required>
                 <br>
-                <!-- Adicione os demais campos do formulário conforme necessário -->
-
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" name="quantidade" value="<?=$produto['pro_quantidade']?>">
+                <br>
+                <label for="validade">Validade:</label>
+                <input type="date" name="validade" value="<?=$produto['pro_validade']?>">
+                <br>
+                <label for="novo_status">Status:</label>
+                <select id="novo_status" name="novo_status" required>
+                    <option value="s" <?= isset($produto['pro_status']) && 
+                    $produto['pro_status'] == 's' ? 'selected' : '' ?>>Sim</option>
+                    <option value="n" <?= isset($produto['pro_status']) && 
+                    $produto['pro_status'] == 'n' ? 'selected' : '' ?>>Não</option>
+                </select>
+                <br>
                 <input type="submit" value="ALTERAR">
             </form>
         </div>

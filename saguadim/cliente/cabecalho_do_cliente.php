@@ -10,6 +10,7 @@ $nomecliente = $_SESSION['nomecliente'];
 <div>
     <ul class="menu">
         <li><a href="home.php">HOME</a></li>
+        <li><a href="produtos.php">PRODUTOS</a></li>
 
         <li class="menuloja"><a href="logout cliente.php">SAIR</a></li>
         

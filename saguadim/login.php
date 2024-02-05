@@ -20,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['idusuario'] = $row['usu_id'];
         $_SESSION['nomeusuario'] = $row['usu_login'];
 
- 
         header("Location: backoffice.php");
         exit();
     } else {

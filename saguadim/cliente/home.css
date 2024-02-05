@@ -1,0 +1,173 @@
+html{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: hwb(32 49% 2%); /* Define a cor de fundo do menu */
+  }
+  .menu {
+    list-style-type: none; /* Remove os marcadores de lista */
+    margin: 0;
+    padding: 0;
+    background-color: hwb(0 100% 0%); /* Define a cor de fundo do menu */
+    border-radius: 10px;
+  }
+  .menu li {
+    display: inline-block; /* Faz com que os itens de menu fiquem um ao lado do outro */
+  }
+  .menu li a {
+    display: block; /* Define os links como elementos de bloco para ocuparem todo o espaço horizontal disponível */
+    padding: 8px 16px; /* Adiciona espaçamento interno aos links */
+    text-decoration: none; /* Remove a decoração de texto padrão (sublinhado) */
+    color: #333; /* Define a cor do texto dos links */
+  
+  }
+  .menu li a:hover {
+   /* Define a cor de fundo ao passar o mouse sobre os links */
+    color: #fff; /* Define a cor do texto ao passar o mouse sobre os links */
+    border-radius: 10px;
+  }
+  .menuloja{
+    float:right;
+  }
+  /* DIV DO FORMULÁRIO */
+  .formulario{
+    float: left;
+    margin-left: 10%;
+  }
+  .profile{
+  float: right;
+  margin: 7px 5px 0 0;
+
+  }
+  /* PADRONIZAÇÃO DA TAG FORM */
+  form{
+    background-color: rgba(158, 115, 23, 0.507);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    padding: 20px;
+    width: 300px;
+  }
+  input{
+    background-color: rgb(231, 221, 204);
+    border-radius: 4px;
+    font-size: 13px;
+      font-weight: 600;
+      border: none;
+      transition-duration: all linear 155ms;
+      cursor: pointer;
+      text-align: center;
+  }
+  input:hover{
+    background-color: #f3f0e6;
+    transition-duration: 1.4s;
+  }
+  input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="decimal"],
+input[type="date"],
+input[type="tel"],
+input[type="email"],
+input[type="file"],
+textarea,
+input[name="cpf"] {
+    background-color: #e0dceb;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    resize: none;
+}
+
+    input[type="submit"]{
+      font-size: 13px;
+      width: 50%;
+      font-weight: 600;
+      border: none;
+      transition-duration: all linear 155ms;
+      cursor: pointer;
+      color: white;
+      text-align: center;
+
+    }
+    input[type="submit"]:hover{
+    background-color: #daa514;
+    transition-duration: 1.4s;
+    }
+    button{
+      transition: ease-in-out 1s;
+      background-color: #daa514;
+      width: 50%;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      transition: all linear 160ms;
+      cursor: pointer;
+      text-align: center;
+      border-radius: 10px;
+    }
+    button:hover{
+      background-color: rgba(139, 94, 10, 0.938);
+      transition: 1.3s;
+    }
+  /* ESTILO DAS TABELAS*/
+  table {
+    border-collapse: collapse;
+    text-align: center;
+    color: #eee;
+    text-decoration: #b1930d79;
+    width: 75%;
+    margin:auto;
+    margin-top: 30px;
+  }
+  a{
+    margin: auto;
+    text-align: center;
+  }
+
+  h2{
+    color: #e0dceb;
+  }
+  h1{
+    color: #e0dceb;
+  }
+  p{
+    color: #000000;
+  }
+  .caixaexclui{
+    width: 300px;
+    height: 300px;
+    float: center;
+  }
+  /* IMAGEM DO ALTERA PRODUTO */
+  .imagem_atual{
+    float: right;
+    position: relative;
+    margin-top: 1.5%;
+    margin-right: 5%;
+    width: 40%;
+    height: 40%;
+    border-radius: 10px;
+  }
+  /* FORM DO ALTERA PRODUTO */
+  .visualizaproduto{
+      background-color: rgb(205, 191, 211);
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      margin: 20px auto;
+      margin-left: 10px;
+      padding: 20px;
+      width: 500px;
+    }
+    .finalizabotao
+    {
+      width: 100px;
+      height: 50px;
+      border-radius: 10px;
+      font-size: smaller;
+    }
+
