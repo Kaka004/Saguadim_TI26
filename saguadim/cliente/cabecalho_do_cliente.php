@@ -9,6 +9,7 @@ $nomecliente = $_SESSION['nomecliente'];
 <link rel="shortcut icon" href="./img/coxinhaaa.png" type="image/x-icon"> 
 <div>
     <ul class="menu">
+        <li><a href="perfil_cliente.php">PERFIL</a></li>
         <li><a href="home.php">HOME</a></li>
         <li><a href="produtos.php">PRODUTOS</a></li>
 

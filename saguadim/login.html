@@ -1,57 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./img/coxinhaaa.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/usuario.css">
     <title>Login</title>
 </head>
-
 <body class="page">
     <div id="container">
         <div id="login" class="formLogin">
-            <form action="login.php" method="post">
+            <form id="loginForm" action="login.php" method="post" onsubmit="return validateLoginForm()">
                 <label>EMAIL</label>
-                <input type="email" name="email" placeholder="email@email.com" required />
+                <input type="email" name="email" id="loginEmail" placeholder="email@email.com" required>
                 <label>SENHA</label>
-                <input type="password" name="senha" id="senhaLogin" placeholder="*****" class="password" required />
-                <button type="button" class="toggle-password" data-field-id="senhaLogin">Mostrar Senha</button>
+                <input type="password" name="senha" id="loginSenha" placeholder="*****" required>
+                <button type="button" class="toggle-password" data-field-id="loginSenha">Mostrar Senha</button>
                 <br>
-                <input type="submit" class="btn" value="LOGIN" />
+                <input type="submit" class="btn" value="LOGIN">
             </form>
-            
-            <h5>Não tem conta? <a href="#" id="toggleCadastra">clique aqui</a></h5>
-        
+            <h5>Não tem conta? <a href="#" onclick="toggleForm('cadastra', 'login')">clique aqui</a></h5>
         </div>
-        <div id="cadastra" class="formLogin">
-            <form action="cadastra.php" method="post">
-                <label>NOME</label>
-                <input type="text" name="login" placeholder="Nome Completo" required />
-                <label>EMAIL</label>
-                <input type="email" name="email" placeholder="nome.sala@curso.com" required />
-                <label>TELEFONE</label>
-                <input type="tel" id="telefone" name="telefone" placeholder="(16) 91234-5678" required>
-                <label>CPF</label>
-                <input type="tel" name="cpf" id="cpf" placeholder="000.000.000-00" required>
-                <label>CURSO</label>
-                <input type="text" name="curso" placeholder="Qual seu curso?" required/>
-                <label>SALA</label>
-                <input type="text" name="sala"  id="sala"  placeholder="Sala do Senac">
-                <label>SENHA</label>
-                <input type="password" name="senha" pattern=".{5,}" id="senhaCadastro" placeholder="*****" class="password" required />
-                <button type="button" class="toggle-password" data-field-id="senhaCadastro">Mostrar Senha</button>
+        <div id="cadastra" class="formLogin" style="display:none;">
+            <form id="cadastroForm" action="cadastra.php" method="post" onsubmit="return validateCadastroForm()">
+                <input type="text" name="nome" id="cadastroNome" placeholder="Nome completo" required>
                 <br>
-                <input type="submit" class="btn" value="CADASTRO" />
+                <input type="email" name="email" id="cadastroEmail" placeholder="Email" required>
+                <br>
+                <input type="password" name="senha" id="cadastroSenha" placeholder="Nova senha" required>
+                <br>
+                <input type="password" name="senha2" id="cadastroSenha2" placeholder="Repita a senha" required>
+                <br>
+                <input type="tel" name="celular" id="cadastroCelular" placeholder="Celular" minlength="15" maxlength="15" required>
+                <br>
+                <input type="text" name="cpf" id="cadastroCpf" placeholder="CPF" minlength="14" maxlength="14" required>
+                <br>
+                <input type="text" name="curso" id="cadastroCurso" placeholder="Curso atual (Senac)" required>
+                <br>
+                <input type="number" name="sala" id="cadastroSala" placeholder="Número da sala" step="1" min="1" max="99" required>
+                <br>
+                <button type="button" class="toggle-password" data-field-id="cadastroSenha">Mostrar Senha</button>
+                <br>
+                <input type="submit" class="btn" value="CADASTRO">
             </form>
             <br>
             <br>
-            
-            <h5>Tem conta? <a href="#" id="toggleLogin">clique aqui</a></h5>
-        
+            <h5>Tem conta? <a href="#" onclick="toggleForm('login', 'cadastra')">clique aqui</a></h5>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-masker/1.1.0/vanilla-masker.min.js"></script>
+    <script src="mostrarSenha.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Máscaras de inputs
+        VMasker(document.getElementById('cadastroCelular')).maskPattern('(99) 99999-9999');
+        VMasker(document.getElementById('cadastroCpf')).maskPattern('999.999.999-99');
+        VMasker(document.getElementById('cadastroSala')).maskPattern('99');
+
+        // Função para alternar entre os formulários de login e cadastro
+        function toggleForm(show, hide) {
+            document.getElementById(show).style.display = 'block';
+            document.getElementById(hide).style.display = 'none';
+        }
+
+        // Função para validar o formulário de login
+        function validateLoginForm() {
+            var email = document.getElementById('loginEmail').value;
+            var senha = document.getElementById('loginSenha').value;
+            // Adicione aqui a lógica de validação, se necessário
+            return true; // Retorne true para permitir o envio do formulário
+        }
+
+        // Função para validar o formulário de cadastro
+        function validateCadastroForm() {
+            var senha = document.getElementById('cadastroSenha').value;
+            var senha2 = document.getElementById('cadastroSenha2').value;
+            if (senha !== senha2) {
+                alert('As senhas não coincidem');
+                return false; // Impede o envio do formulário se as senhas não coincidirem
+            }
+            // Adicione aqui outras lógicas de validação, se necessário
+            return true; // Retorne true para permitir o envio do formulário
+        }
+    </script>
 </body>
-<script src="mostrarSenha.js"></script>
-<script src="script.js"></script>
 </html>

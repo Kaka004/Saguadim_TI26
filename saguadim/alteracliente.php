@@ -29,6 +29,7 @@ if (isset($_GET['id'])) {
 } else {
     // $id do usuário não fornecido, redireciona ou exibe uma mensagem de erro
     header("Location: lista_clientes.php");
+    exit();
 }
 
 // Processa os dados do formulário quando enviado via POST
@@ -74,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="novo_telefone">Telefone</label>
         <input type="tel" name="novo_telefone" id="novo_telefone" value="<?= $telefone ?>">
         <label for="novo_cpf">CPF:</label>
-        <input type="text" name="novo_cpf" id="novo_cpf" value="<?=  $cpf ?>" readonly>
+        <input type="text" name="novo_cpf" id="novo_cpf" value="<?=  $cpf ?>" required>
         <label for="novo_curso">Curso:</label>
         <input type="text" name="novo_curso" id="novo_curso"  value="<?= $curso ?>" required>
         <label for="nova_sala">Sala:</label>
@@ -90,5 +91,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <button type="submit">Salvar Alterações</button>
     </form>
+    <script>
+        function toggleForm(show, hide) {
+            document.getElementById(show).style.display = 'block';
+            document.getElementById(hide).style.display = 'none';
+        };
+    </script>
 </body>
 </html>

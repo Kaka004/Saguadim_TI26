@@ -32,7 +32,7 @@
                 <label>TELEFONE</label>
                 <input type="tel" id="telefone" name="telefone" placeholder="(16) 91234-5678" required>
                 <label>CPF</label>
-                <input type="tel" name="cpf" id="cpf" placeholder="000.000.000-00" required>
+                <input type="tel" name="cpf" id="cpf" pattern=".{11,}" placeholder="000.000.000-00" required>
                 <label>CURSO</label>
                 <input type="text" name="curso" placeholder="Qual seu curso?" required/>
                 <label>SALA</label>
@@ -40,17 +40,45 @@
                 <label>SENHA</label>
                 <input type="password" name="senha" pattern=".{5,}" id="senhaCadastro" placeholder="*****" class="password" required />
                 <button type="button" class="toggle-password" data-field-id="senhaCadastro">Mostrar Senha</button>
-                <br>
                 <input type="submit" class="btn" value="CADASTRO" />
             </form>
             <br>
-            <br>
-            
-            <h5>Tem conta? <a href="#" id="toggleLogin">clique aqui</a></h5>
-        
+
+            <h5>Tem conta? <a href="#" id="toggleLogin">Clique aqui</a></h5>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-masker/1.1.0/vanilla-masker.min.js"></script>
+    <script src="mostrarSenhaCliente.js"></script>
+    <script src="scriptCliente.js"></script>
+    <script>
+        // Máscaras de inputs
+        VMasker(document.getElementById('telefone')).maskPattern('(99) 99999-9999');
+        VMasker(document.getElementById('cpf')).maskPattern('999.999.999-99');
+        VMasker(document.getElementById('sala')).maskLetters('99');
+        
+        // Função para alternar entre os formulários de login e cadastro
+        function toggleForm(show, hide) {
+            document.getElementById(show).style.display = 'block';
+            document.getElementById(hide).style.display = 'none';
+        }
+
+        // Função para alternar a visibilidade da senha
+        function togglePassword(fieldId) {
+            const passwordField = document.getElementById(fieldId);
+            const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+            passwordField.setAttribute("type", type);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const togglePasswordButtons = document.querySelectorAll(".toggle-password");
+
+            togglePasswordButtons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    const fieldId = button.getAttribute("data-field-id");
+                    togglePassword(fieldId);
+                });
+            });
+        });
+    </script>
 </body>
-<script src="mostrarSenhaCliente.js"></script>
-<script src="scriptCliente.js"></script>
 </html>
