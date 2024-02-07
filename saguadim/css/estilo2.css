@@ -122,6 +122,7 @@ input[name="cpf"] {
     text-decoration: #b1930d79;
     width: 75%;
     margin:auto;
+    margin-top: 20px;
   }
 
   h2{

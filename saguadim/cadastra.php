@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         mysqli_stmt_close($stmt_insert);
 
         echo "<script>window.alert('CLIENTE CADASTRADO COM SUCESSO');</script>";
-        echo "<script>window.location.href='login.html';</script>";
+        echo "<script>window.location.href='login cliente.html';</script>";
     }
 }
 ?>

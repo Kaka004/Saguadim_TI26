@@ -37,22 +37,13 @@
     </head>
     <body>
         <div id="background ">
-            <form action="listausuario.php" method="post">
-                <input type="radio" name="ativo" class="radio" value="s"
-                required onclick="submit()" <?= $ativo == 's' ? "checked" : "" ?>>ATIVOS
-                <br>
-                <input type="radio" name="ativo" class="radio" value="n"
-                required onclick="submit()" <?= $ativo == 'n' ? "checked" : "" ?>>INATIVOS
-                <br>
-                <input type="radio" name="ativo" class="radio" value="todos" 
-                required onclick="submit()" <?= $ativo == 'todos' ? "checked" : "" ?>>TODOS
-
-            </form>
             <div class="container">
                 <table border="1">
                     <tr>
                         <th>NOME</th>
-                        <th>ALTERAR DADOS</th>
+                        <th>SENHA</th>
+                        <th>EMAIL</th>
+                        <th>PERFIL</th>
                         <th>ATIVO</th>
                     </tr>
                     <!-- INICIO DE PHP + HTML -->
@@ -66,7 +57,9 @@
                         <tr>
                             <td><?=$tbl[1] ?></td> <!--TRAZ SOMENTE A COLUNA 1 [NOME] DO BANCO -->
                             <!-- AO CLICAR NO BOTÃO ELE JÁ TRARÁ O ID DO USUÁRIO PARA A PÁGINA DO ALTERUSUARIO -->
-                            <td><a href="alterausuario.php?id=<?=$tbl[0] ?>"><input type="button" value="ALTERAR DADOS"></a></td>
+                            <td><?= $tbl[2]?></td>
+                            <td><?= $tbl[5]?></td>
+                            <td><a href="perfil_usuario.php?id=<?=$tbl[0] ?>"><input type="button" value="PERFIL"></a></td>
 
                             <td><?= $check = ($tbl[3] == "s") ? "SIM" : "NÃO" ?></td>
 

@@ -1,0 +1,18 @@
+$usu_id = $_SESSION['usu_id'];
+
+// Consulta o banco de dados para obter os dados do usuário
+$sql = "SELECT * FROM usuarios WHERE usu_id = $usu_id";
+$resultado = mysqli_query($link, $sql);
+
+// Verifica se a consulta foi bem-sucedida e se encontrou o usuário
+if ($resultado && mysqli_num_rows($resultado) > 0) {
+    // Obtém os dados do usuário
+    $usuario = mysqli_fetch_assoc($resultado);
+} else {
+    // Se não encontrar o usuário, exiba uma mensagem de erro ou redirecione
+    echo "Erro: Usuário não encontrado.";
+    exit();
+}
+
+// Feche a conexão com o banco de dados
+mysqli_close($link);
