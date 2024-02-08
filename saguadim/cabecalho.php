@@ -12,7 +12,7 @@ $nomeusuario = isset($_SESSION['nomeusuario']) ? $_SESSION['nomeusuario'] : ""; 
         <li><a href="cadastraproduto.php">CADASTRAR PRODUTO</a></li>
         <li><a href="listaproduto.php">LISTA PRODUTO</a></li>
         <li><a href="lista_clientes.php">LISTA CLIENTE</a></li>
-        <!--<li><a href="encomendas.php">ENCOMENDAS</a></li>-->
+        <li><a href="encomendas.php">ENCOMENDAS</a></li>
         <li><a href="fornecedor.php">FORNECEDOR</a></li>
         <li><a href="backoffice.php">HOME</a></li>
 

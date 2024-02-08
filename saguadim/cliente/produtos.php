@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                     <td><?= $tbl[1] ?></td>
                     <td><?= number_format($tbl[2], 2, ',', '.') ?></td>
                     <td><?= number_format($tbl[3], 2, ',', '.') ?></td>
-                    <td ><a href="comprar.php?id=<?= $tbl[4] ?>"><input type="button" value="COMPRAR"></a></td>
+                    <td ><a href="adicionaproduto.php?id=<?= $tbl[4] ?>"><input type="button" value="ADICIONAR"></a></td>
                 </tr>
             <?php
             }

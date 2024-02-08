@@ -1,25 +1,17 @@
 <?php
+session_start();
 #ABRIR CONEXÃO COM O SQL
 include("cabecalho_do_cliente.php");
 
-#Instrução para o sql
-$sql = "SELECT * FROM clientes WHERE cli_status = 's'";
-$retorno = mysqli_query($link, $sql);
+$id = $_SESSION['idcliente']; 
 
+#Instrução para o sql
+$sql = "SELECT * FROM clientes WHERE cli_status = 's', cli_id = '$id'";
+$retorno = mysqli_query($link, $sql);
 $ativo ="s";
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $ativo = $_POST['ativo'];
-
-    if($ativo == 's') {
-        $sql = "SELECT * FROM clientes WHERE cli_status = 's'";
-    } elseif ($ativo == 'n') {
-        $sql = "SELECT * FROM clientes WHERE cli_status = 'n'";
-    } else{
-        $sql = "SELECT * FROM clientes";
-    }
-
-    $retorno = mysqli_query($link, $sql);
+   
 }
 ?>
 
@@ -36,12 +28,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             <form action="listagem_clientes.php" method="post">
                 <input type="radio" name="ativo" class="radio" value="s"
                 required onclick="submit()" <?= $ativo == 's' ? "checked" : "" ?>>ATIVOS
-                <br>
+                <!--<br>
                 <input type="radio" name="ativo" class="radio" value="n"
                 required onclick="submit()" <?= $ativo == 'n' ? "checked" : "" ?>>INATIVOS
                 <br>
                 <input type="radio" name="ativo" class="radio" value="todos" 
-                required onclick="submit()" <?= $ativo == 'todos' ? "checked" : "" ?>>TODOS
+                required onclick="submit()" <?= $ativo == 'todos' ? "checked" : "" ?>>TODOS-->
 
             </form>
             <div class="container">
@@ -66,6 +58,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                         #MAS AQUI EU FECHO PARA TRABLHAR COM HTML SIMULTANEAMENTE
                     ?>
                         <tr>
+                            
                             <td><?=$tbl[1] ?></td> <!--TRAZ SOMENTE A COLUNA 1 [NOME] DO BANCO -->
                             <td><?= $tbl[2]?></td>
                             <td><?= $tbl[3]?></td>
