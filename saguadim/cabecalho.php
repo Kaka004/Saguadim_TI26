@@ -3,12 +3,12 @@ include("conectadb.php");
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
-$nomeusuario = isset($_SESSION['nomeusuario']) ? $_SESSION['nomeusuario'] : ""; // Corrigido o operador ternário
+$nomeusuario = isset($_SESSION['nomeusuario']) ? $_SESSION['nomeusuario'] : "";
 ?>
 <link rel="shortcut icon" href="./img/coxinhaaa.png" type="image/x-icon"> 
 <div>
     <ul class="menu">
-        <li><a href="perfil_usuario.php">PERFIL</a></li>
+        <li><a href="usuario_altera_usuario.php?id=">PERFIL</a></li>
         <li><a href="cadastraproduto.php">CADASTRAR PRODUTO</a></li>
         <li><a href="listaproduto.php">LISTA PRODUTO</a></li>
         <li><a href="lista_clientes.php">LISTA CLIENTE</a></li>

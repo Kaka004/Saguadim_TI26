@@ -19,7 +19,7 @@
                 <br>
                 <input type="submit" class="btn" value="LOGIN">
             </form>
-            <h5>Não tem conta? <a href="#" onclick="toggleForm('cadastra', 'login')">clique aqui</a></h5>
+            <h5>É cliente? <a href="#" onclick="toggleForm('cadastra', 'login')">clique aqui</a></h5>
         </div>
         <div id="cadastra" class="formLogin" style="display:none;">
             <form id="cadastroForm" action="cadastra.php" method="post" onsubmit="return validateCadastroForm()">
@@ -45,7 +45,7 @@
             </form>
             <br>
             <br>
-            <h5>Tem conta? <a href="#" onclick="toggleForm('login', 'cadastra')">clique aqui</a></h5>
+            <h5>É admin? <a href="#" onclick="toggleForm('login', 'cadastra')">clique aqui</a></h5>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-masker/1.1.0/vanilla-masker.min.js"></script>

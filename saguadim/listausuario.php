@@ -1,31 +1,19 @@
 <?php
+ session_start();
     #ABRE UMA CONEXÃO COM O BANCO DE DADOS
     include("cabecalho.php");
+    
+    $id = $_SESSION['idusuario'];
 
     #PASSANDO UMA INSTRUÇÃO AO BANCO DE DADOS
-    $sql = "SELECT * FROM usuarios WHERE usu_status = 's'";
+    $sql = "SELECT * FROM usuarios WHERE usu_status = 's', usu_id = '$id'";
     $retorno = mysqli_query($link, $sql);
-
-    #FORÇA SEMPRE TRAZER 'S' NA VARIÁVEL PARA UTILIZARMOS NOS RADIO BUTNTON
     $ativo = "s";
-
-    #COLETA O BOTÃO MÉTODO POST VINDO DO HTML
+    
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $ativo = $_POST['ativo'];
     
-        if ($ativo == 's') {
-            $sql = "SELECT * FROM usuarios WHERE usu_status = 's'";
-        } elseif ($ativo == 'n') {
-            $sql = "SELECT * FROM usuarios WHERE usu_status = 'n'";
-        } else {
-            $sql = "SELECT * FROM usuarios"; // Isso seleciona todos os usuários.
-        }
-
-        $retorno = mysqli_query($link, $sql);
     }
-    
 ?>
-
 
 <html>
     <head>
