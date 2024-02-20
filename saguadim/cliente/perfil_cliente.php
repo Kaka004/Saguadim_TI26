@@ -18,6 +18,7 @@ if (isset($_GET['idcliente'])) {
         $curso = isset($cliente['cli_curso']) ? $cliente['cli_curso'] : ''; 
         $sala = isset($cliente['cli_sala']) ? $cliente['cli_sala'] : '';
         $senha = isset($cliente['cli_senha']) ? $cliente['cli_senha'] : '';
+        $saldo = isset($cliente['cli_saldo']) ? $cliente['cli_saldo'] : '';
         $status = isset($cliente['cli_status']) ? $cliente['cli_status'] : ''; 
     } else {
         // Cliente não encontrado, redireciona ou exibe uma mensagem de erro
@@ -40,12 +41,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $novoCurso = mysqli_real_escape_string($link, $_POST['novo_curso']);
     $novaSala = mysqli_real_escape_string($link, $_POST['nova_sala']);
     $novasenha = mysqli_real_escape_string($link, $_POST['nova_senha']);
+    $novoSaldo = mysqli_real_escape_string($link, $_POST['novo_saldo']);
     $novostatus = mysqli_real_escape_string($link, $_POST['novo_status']);
 
     // Atualiza os dados do cliente no banco de dados
     $sql = "UPDATE clientes SET cli_nome = '$novoNome', cli_email = '$novoEmail', cli_telefone = '$novotelefone',
     cli_cpf = '$novoCpf', cli_curso = '$novoCurso', cli_sala = '$novaSala', 
-    cli_senha = '$novasenha', cli_status = '$novostatus' WHERE cli_id = '$id' ";
+    cli_senha = '$novasenha', cli_saldo = '$novoSaldo' , cli_status = '$novostatus' WHERE cli_id = '$id' ";
     mysqli_query($link, $sql);
 
     // Redireciona para a lista de clientes após a atualização
@@ -81,11 +83,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="number" name="nova_sala" id="nova_sala" value="<?= $sala ?>" required>
         <label for="nova_senha">Senha:</label>
         <input type="password" id="nova_senha" pattern=".{5,}" name="nova_senha" placeholder="*****" required>
+        <label for="novo_saldo">Saldo</label>
+        <input type="number" name="novo_saldo" id="novo_saldo" readonly>
         <label for="novo_status">Status:</label>
-        <select id="novo_status" name="novo_status" required>
-            <option value="s" <?= $status == 's' ? 'selected' : '' ?>>Ativo</option>
-            <option value="n" <?= $status == 'n' ? 'selected' : '' ?>>Inativo</option>
-        </select>
 
         <button type="submit">Salvar Alterações</button>
     </form>

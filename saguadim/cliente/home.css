@@ -47,7 +47,7 @@ html{
     width: 300px;
   }
   input{
-    background-color: rgb(231, 221, 204);
+    background-color: rgb(255, 161, 0);
     border-radius: 4px;
     font-size: 13px;
       font-weight: 600;
@@ -111,7 +111,7 @@ input[name="cpf"] {
       border-radius: 10px;
     }
     button:hover{
-      background-color: rgba(139, 94, 10, 0.938);
+      background-color: rgba(255, 166, 0, 0.938);
       transition: 1.3s;
     }
   /* ESTILO DAS TABELAS*/

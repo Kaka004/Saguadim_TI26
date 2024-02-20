@@ -1,20 +1,19 @@
 <?php
 include('cabecalho_do_cliente.php');
 
-$sql = "SELECT pro_nome, pro_quantidade, pro_custo, pro_preco, pro_id, pro_status FROM produtos WHERE pro_status = 's'";
+$sql = "SELECT pro_nome, pro_quantidade, pro_preco, pro_id FROM produtos WHERE pro_status = 's'";
 $retorno = mysqli_query($link, $sql);
-$ativo = "s";
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     $ativo = $_POST['ativo'];
     if ($ativo == 's') {
-        $sql = "SELECT pro_nome, pro_quantidade, pro_custo, pro_preco, pro_id, pro_status FROM produtos WHERE pro_status = 's'";
+        $sql = "SELECT pro_nome, pro_quantidade, pro_preco, pro_id FROM produtos WHERE pro_status = 's'";
         $retorno = mysqli_query($link, $sql);
     } elseif ($ativo == "todos") {
-        $sql = "SELECT pro_nome, pro_quantidade, pro_custo, pro_preco, pro_id, pro_status FROM produtos";
+        $sql = "SELECT pro_nome, pro_quantidade, pro_preco, pro_id FROM produtos";
         $retorno = mysqli_query($link, $sql);
     } else {
-        $sql = "SELECT pro_nome, pro_quantidade, pro_custo, pro_preco, pro_id, pro_status FROM produtos WHERE pro_status = 'n'";
+        $sql = "SELECT pro_nome, pro_quantidade, pro_preco, pro_id FROM produtos WHERE pro_status = 'n'";
         $retorno = mysqli_query($link, $sql);
     }
 }
@@ -34,7 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             <tr>
                 <th>NOME</th>
                 <th>QUANTIDADE</th>
-                <th>CUSTO</th>
                 <th>PREÇO</th>
                 <th>COMPRA</th>
             </tr>
@@ -43,17 +41,20 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             while ($tbl = mysqli_fetch_array($retorno)) {
             ?>
                 <tr>
-                    <td><?= $tbl[0] ?></td>
-                    <td><?= $tbl[1] ?></td>
-                    <td><?= number_format($tbl[2], 2, ',', '.') ?></td>
-                    <td><?= number_format($tbl[3], 2, ',', '.') ?></td>
-                    <td ><a href="adicionaproduto.php?id=<?= $tbl[4] ?>"><input type="button" value="ADICIONAR"></a></td>
+                    <td><?= $tbl['pro_nome'] ?></td>
+                    <td><?= $tbl['pro_quantidade'] ?></td>
+                    <td><?= number_format($tbl['pro_preco'], 2, ',', '.') ?></td>
+                    <td><a href="selecionar_quantidade.php?id=<?= $tbl['pro_id'] ?>" onclick="mostrarAlerta()"><input type="button" value="ADICIONAR"></a></td>
                 </tr>
             <?php
             }
             ?>
         </table>
     </div>
+    <script>
+        function mostrarAlerta(){
+            alert("Selecione quantos você quer");
+        }
+    </script>
 </body>
 </html>
-
